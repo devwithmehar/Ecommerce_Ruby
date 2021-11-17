@@ -1,19 +1,38 @@
 require "faker"
 
-# item = Item.create(
-#   name:"Hundai",
-#   price: 3000.2,
-#   category_id: 1,
-#   store_id: 1
-# )
+Item.destroy_all
 
-# category = Category.create(
-#   name:"Car",
-#   store_id: 1
-# )
+Category.destroy_all
 
-stores = Store.create(
-  name:"Mehar Store",
-  email:"meharsahil207@gmail.com",
-  address:"110 McPhillips"
-)
+Store.destroy_all
+
+1.times do
+  store = Store.create(
+    name: "Café Coffee Day",
+    address: "21 McPhillips",
+    email: "meharsahil207@gmail.com"
+  )
+
+10.times do
+
+ category = Category.create(
+
+    name: Faker::Coffee.variety,
+    store_id: 1
+
+  )
+
+  5.times do
+
+    items = Item.create(
+        name: Faker::Coffee.blend_name,
+        price: Faker::Commerce.price,
+        category_id: Faker::Number.between(from: 1, to: 10),
+        store_id: 1
+
+    )
+
+  end
+end
+
+end
