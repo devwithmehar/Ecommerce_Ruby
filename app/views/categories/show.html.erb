@@ -1,0 +1,9 @@
+<h2 class="display-5 mb-5 mt-2 " > <%= @category.name %> </h2>
+
+<samp>Items in the <%= @category.name %> Category :</samp>
+
+<ol class="list-group list-group-flush">
+    <% @items.each do |item| %>
+    <li class="list-group-item"> <%= link_to  item.name, item %> </li>
+    <% end %>
+</ol>
