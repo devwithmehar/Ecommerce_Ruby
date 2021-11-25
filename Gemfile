@@ -55,10 +55,12 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'image_processing' # ImageMagic
+
 
 gem 'rake'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 gem 'activeadmin'
 gem 'devise'
+
+gem 'image_processing' # ImageMagic
