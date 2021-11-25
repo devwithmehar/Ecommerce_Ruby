@@ -1,11 +1,6 @@
-<h2 class="display-5 mb-5 mt-2 " > <%= @item.name %> </h2>
+<div class="columns">
+  <%= render partial: 'item',
+            object: @item,
+            locals: { name_is_link: false } %>
+</div>
 
-<dl class="row ">
-  <dt class="col-sm-3">Item Name</dt>
-  <dd class="col-sm-9"> <%= @item.name %> </dd>
-
-  <dt class="col-sm-3 ">Price</dt>
-  <dd class="col-sm-9"><%= number_to_currency @item.price %></dd>
-
-
-</dl>
