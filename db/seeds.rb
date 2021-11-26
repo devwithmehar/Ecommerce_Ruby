@@ -21,14 +21,17 @@ Store.destroy_all
     5.times do
       items = Item.create(
           name: Faker::Coffee.blend_name,
+          description:Faker::Coffee.notes,
+          quantity: rand(1..100),
           price: Faker::Commerce.price,
           category: categories,
           store: store
       )
-      query = URI.encode_www_form_component([items.name, categories.name].join(','))
-      download_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
-      items.image.attach(io: download_image, filename: "m-#{[items.name, categories.name].join('-')}.jpg")
-      sleep(1)
+
+query = URI.encode_www_form_component([items.name, categories.name].join(','))
+download_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
+items.image.attach(io: download_image, filename: "m-#{[items.name, categories.name].join('-')}.jpg")
+sleep(1)
     end
 
   end

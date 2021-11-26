@@ -1,0 +1,31 @@
+<div class="column is-one-third">
+  <% if item.image.present? %>
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <%= image_tag item.image %>
+      </figure>
+    </div>
+  <% end %>
+  <div class="card item">
+    <div class="card-content">
+    <p class="title is-4">
+      <% if name_is_link %>
+        <%= link_to item.name, item %>
+      <% else %>
+        <%= item.name %>
+      <% end %>
+    </p>
+    <ul>
+      <li>
+        <strong>Price:</strong> <%= item.price %>
+      </li>
+      <li>
+        <strong>Quantity:</strong> <%= item.quantity%>
+      </li>
+      <li>
+        <strong>Description:</strong> <%= item.description %>
+      </li>
+    </ul>
+    </div>
+  </div>
+</div>
