@@ -7,4 +7,10 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @items = Item.where(category_id: @category)
   end
+
+  def search
+    wildcard_search = "%#{params[:keywords]}%"
+    @categories = Category.where("name LIKE ?", wildcard_search)
+  end
+
 end

@@ -6,4 +6,10 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
   end
+
+  def search
+    wildcard_search = "%#{params[:keywords]}%"
+    @items = Item.where("name LIKE ?", wildcard_search)
+  end
+
 end

@@ -31,12 +31,16 @@
 
       </ul>
         <%# Here the search form will be imported %>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <%= form_tag(search_page_path, :method => "get", class: 'navbar-form navbar-left') do %>
+      <div class="input-group mb-3">
+        <%= select_tag 'category', options_from_collection_for_select(Category.all, :id,:name), include_blank: "Category", class: "select is-info" %>
+        <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+        <div class="input-group-btn">
+          <%= button_tag "Search", :class => 'btn btn-dark',:name => nil%>
+        </div>
+      </div>
+<% end %>
 
-      
     </div>
   </div>
 </nav>

@@ -1,0 +1,17 @@
+<% if @result_set.empty? %>
+
+<br/><br/><h2>Nothing is found</h2><br/><br/>
+
+<% else%>
+
+<br/><br/><h2>Cofees found are</h2><br/><br/>
+
+<% @result_set.each do |result|%>
+
+  <ul class="list-group">
+
+       <li class="list-group-item ">  <%= link_to result.name, result %><br></li>
+
+  <% end %>
+
+<%end%>
