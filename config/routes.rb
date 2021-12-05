@@ -18,4 +18,6 @@ Rails.application.routes.draw do
       get "search"
     end
   end
+
+  resources :cart, only: %i[create destroy]
 end
