@@ -13,8 +13,18 @@
         <h5 class="card-title"><%= link_to item.name, item %> </h5>
         <p class="card-text"><%= item.description %></p>
         <p class="card-text"><small class="text-muted"><%= item.price %></small></p>
-        <button type="button" class="btn btn-primary">Add to Cart</button>
-     
+
+     <%if cart.include?(item) %>
+    <%= button_to cart_path(item), method: :delete do %>
+    Remove from Cart
+    <% end %>
+
+    <% else %>
+    <%= form_with url: cart_index_path, method: :post do   %>
+    <%= hidden_field_tag(:id, item.id) %>
+      <%= button_tag 'Add to Cart' %>
+    <% end %>
+    <%end%>
 
       </div>
     </div>
