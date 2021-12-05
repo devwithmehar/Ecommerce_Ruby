@@ -21,14 +21,25 @@
       <a class="navbar-brand" href="/">Cofee Shop</a>
       <ul class="navbar-nav me-auto mb-2  mb-lg-0">
 
-         <li class="nav-item mx-5">
+         <li class="nav-item mx-2">
           <a class="nav-link active" aria-current="page" href="/categories">Categories</a>
         </li>
 
-         <li class="nav-item mx-5">
+         <li class="nav-item mx-2">
           <a class="nav-link active" aria-current="page" href="/items"> Cofee </a>
         </li>
+ <li class="nav-item mx-2">
+          <%= link_to image_tag("cart.jpeg", width:60), root_path %>
+        </li>
+        <li class="nav-item mx-2">
+        <div class="badge bg-primary text-wrap" style="width: 6rem;">
+ Cart
+          <%if cart.present? %>
+          <p > <%= cart.size %> </p>
+          <% end %>
+</div>
 
+        </li>
       </ul>
         <%# Here the search form will be imported %>
       <%= form_tag(search_page_path, :method => "get", class: 'navbar-form navbar-left') do %>
@@ -44,11 +55,11 @@
 <p class="navbar-text float-right ">
 <% if user_signed_in? %>
   Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link mx-5' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link mx-5'  %>
+  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link mx-2' %> |
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link mx-2'  %>
 <% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link mx-5'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link mx-5'  %>
+  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link mx-2'  %> |
+  <%= link_to "Login", new_user_session_path, :class => 'navbar-link mx-2'  %>
 <% end %>
 </p>
 
