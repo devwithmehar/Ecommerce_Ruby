@@ -1,4 +1,10 @@
 class CartController < ApplicationController
+
+  def index
+    @items =  Item.find(session[:shopping_cart] )
+    @total = 0
+  end
+
   def create
     logger.debug("Adding #{params[:id]} to cart")
 
