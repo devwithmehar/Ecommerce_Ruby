@@ -18,7 +18,7 @@ Store.destroy_all
       name:     Faker::Coffee.variety,
       store: store
     )
-    5.times do
+    20.times do
       items = Item.create(
           name: Faker::Coffee.blend_name,
           description:Faker::Coffee.notes,
