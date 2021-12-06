@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all.includes(:store && :category).order("name")
+    @items = Item.all.includes(:store && :category).order("name").page(params[:page])
   end
 
   def show
