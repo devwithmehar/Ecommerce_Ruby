@@ -1,31 +1,20 @@
-<div class="column is-one-third">
-  <% if item.image.present? %>
-    <div class="card-image">
-      <figure class="image is-4by3">
-        <%= image_tag item.image %>
-      </figure>
-    </div>
-  <% end %>
-  <div class="card item">
-    <div class="card-content">
-    <p class="title is-4">
-      <% if name_is_link %>
-        <%= link_to item.name, item %>
-      <% else %>
-        <%= item.name %>
-      <% end %>
-    </p>
-    <ul>
-      <li>
-        <strong>Price:</strong> <%= item.price %>
-      </li>
-      <li>
-        <strong>Quantity:</strong> <%= item.quantity%>
-      </li>
-      <li>
-        <strong>Description:</strong> <%= item.description %>
-      </li>
-    </ul>
-    </div>
-  </div>
-</div>
+  <aside>
+    <% if item.image.present? %>
+      <p><%= image_tag item.image.variant(resize_to_limit: [285, 285]).processed  %></p>
+    <% end %>
+    <h3><%= link_to item.name, item %></h3>
+    <p>Price: <%= number_to_currency item.price %></p>
+    <p><%= item.description %></p>
+
+    <%if cart.include?(item) %>
+    <%= button_to cart_path(item), method: :delete do %>
+    Remove from Cart
+    <% end %>
+
+    <% else %>
+    <%= form_with url: cart_index_path, method: :post do   %>
+    <%= hidden_field_tag(:id, item.id) %>
+      <%= button_tag 'Add to Cart' %>
+    <% end %>
+    <%end%>
+  </aside>
