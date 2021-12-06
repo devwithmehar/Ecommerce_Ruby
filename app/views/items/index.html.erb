@@ -1,3 +1,4 @@
+<%= paginate @items %>
 <div class="row">
 <% @items.each do |item| %>
 <div class="col-sm-4 pb-4">
@@ -37,3 +38,5 @@
 
 <% end %>
 </div>
+
+<%= paginate @items %>
