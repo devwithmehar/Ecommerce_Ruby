@@ -19,17 +19,12 @@
         <p class="card-text"><%= item.description %></p>
         <p class="card-text"><small class="text-muted"><%= item.price %></small></p>
 
-     <%if cart.include?(item) %>
-    <%= button_to cart_path(item), method: :delete  do %>
-    Remove from Cart
-    <% end %>
-
-    <% else %>
+    
     <%= form_with url: cart_index_path, method: :post do   %>
     <%= hidden_field_tag(:id, item.id) %>
       <%= button_tag 'Add to Cart' %>
     <% end %>
-    <%end%>
+
 
       </div>
     </div>
