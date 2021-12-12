@@ -14,4 +14,8 @@ class ItemsController < ApplicationController
     @items = Item.where("name LIKE ?", wildcard_search)
   end
 
+  def create
+    redirect_to action: :index
+  end
+
 end

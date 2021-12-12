@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   root to: 'items#index'
- resources :items, only: %i[index show] do
+ resources :items, only: %i[index show create] do
     collection do
       get "search"
     end

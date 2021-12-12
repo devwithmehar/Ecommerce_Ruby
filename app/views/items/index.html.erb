@@ -14,7 +14,8 @@
       <div class="card-body">
         <h5 class="card-title"><%= link_to item.name, item %> </h5>
         <p class="card-text"><%= item.description %></p>
-        <p class="card-text"><small class="text-muted"><%= item.price %></small></p>
+        <p class="card-text"><small class="text-muted"><%= number_to_currency item.price %></small></p>
+       <p class="card-text"><small class="text-muted">Quantity:  <%= @qty %></small></p>
 
 
     <%= form_with url: cart_index_path, method: :post do   %>

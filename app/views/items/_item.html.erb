@@ -5,10 +5,11 @@
     <h3><%= link_to item.name, item %></h3>
     <p>Price: <%= number_to_currency item.price %></p>
     <p><%= item.description %></p>
+    <p>Quantity : <%= @qty %></p>
 
-   
     <%= form_with url: cart_index_path, method: :post do   %>
     <%= hidden_field_tag(:id, item.id) %>
+    <%= hidden_field_tag(:quantity, @qty) %>
       <%= button_tag 'Add to Cart' %>
     <% end %>
 
