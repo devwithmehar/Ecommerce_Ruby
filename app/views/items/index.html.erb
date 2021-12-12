@@ -16,9 +16,10 @@
         <p class="card-text"><%= item.description %></p>
         <p class="card-text"><small class="text-muted"><%= item.price %></small></p>
 
-     
+
     <%= form_with url: cart_index_path, method: :post do   %>
     <%= hidden_field_tag(:id, item.id) %>
+    <%= hidden_field_tag(:quantity, @qty) %>
       <%= button_tag 'Add to Cart' %>
     <% end %>
 

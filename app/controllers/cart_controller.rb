@@ -1,15 +1,16 @@
 class CartController < ApplicationController
 
   def index
-    @items =  Item.find(session[:shopping_cart] )
+  @hash_session = session[:shopping_cart]
     @total = 0
   end
 
   def create
     logger.debug("Adding #{params[:id]} to cart")
-
-    id = params[:id].to_i
-    session[:shopping_cart] << id # puts onto the array on the end
+    quantity = params[:quantity]
+    id = params[:id]
+    session[:shopping_cart][id.to_sym]  # puts onto the array on the end
+    session[:shopping_cart][id.to_sym] = quantity
     product = Item.find(id)
     flash[:notice] = "➕ #{product.name} added to cart!"
     redirect_to root_path
@@ -17,7 +18,7 @@ class CartController < ApplicationController
 
   def destroy
     id = params[:id].to_i
-    session[:shopping_cart].delete(id)
+    session[:shopping_cart].delete(id.to_s)
     product = Item.find(id)
     flash[:notice] = "➖ #{product.name} removed from cart!"
     redirect_to cart_index_path

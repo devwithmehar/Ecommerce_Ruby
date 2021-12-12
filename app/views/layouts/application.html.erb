@@ -32,12 +32,15 @@
           <%= link_to image_tag("cart.jpeg", width:60), cart_index_path %>
         </li>
         <li class="nav-item mx-2">
+
+        <%if ( session[:shopping_cart].size()) != 0  %>
         <div class="badge bg-primary text-wrap" style="width: 6rem;">
  Cart
-          <%if cart.present? %>
-          <p > <%= cart.size %> </p>
-          <% end %>
+
+          <p > <%= session[:shopping_cart].size() %> </p>
+
 </div>
+<% end %>
 
         </li>
       </ul>

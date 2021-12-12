@@ -3,10 +3,13 @@ class ApplicationController < ActionController::Base
   helper_method :cart
 
   def initialize_session
-    session[:shopping_cart] ||= [] # empty array
+    session[:shopping_cart] ||= {} # empty array
   end
 
   def cart
-     Item.find(session[:shopping_cart] )
+    if(!session[:shopping_cart] == {})
+      Item.find(session[:shopping_cart])
+    end
+
   end
 end
