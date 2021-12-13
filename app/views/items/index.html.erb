@@ -15,12 +15,27 @@
         <h5 class="card-title"><%= link_to item.name, item %> </h5>
         <p class="card-text"><%= item.description %></p>
         <p class="card-text"><small class="text-muted"><%= number_to_currency item.price %></small></p>
-       <p class="card-text"><small class="text-muted">Quantity:  <%= @qty %></small></p>
+
+
+    <% params[:quantity] =1 %>
+
+
+       <p class="card-text"><small class="text-muted">Quantity:  <%= params[:quantity] %></small></p>
+
+
+
+
+
+       <%= form_tag items_path do  %>
+      <%= hidden_field_tag(:id, item.id.to_s) %>
+    <%= hidden_field_tag(:quantity, session[:item_quantity][item.id.to_s]) %>
+      <%= button_tag 'Add ' %>
+       <% end %>
 
 
     <%= form_with url: cart_index_path, method: :post do   %>
     <%= hidden_field_tag(:id, item.id) %>
-    <%= hidden_field_tag(:quantity, @qty) %>
+    <%= hidden_field_tag(:quantity, params[:quantity]) %>
       <%= button_tag 'Add to Cart' %>
     <% end %>
 
@@ -37,3 +52,7 @@
 </div>
 
 <%= paginate @items %>
+
+<%# Doing experiment with the quantity %>
+
+<%# <%= @hash_item_quantity_relation %> 
