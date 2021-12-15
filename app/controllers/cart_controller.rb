@@ -4,7 +4,7 @@ class CartController < ApplicationController
   @hash_session = session[:shopping_cart]
     @subtotal = 0
     @province = Province.find(current_user.province_id)
-    @total =  @province.GST + @province.PST + @province.HST
+    @total = 0
   end
 
   def create

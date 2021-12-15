@@ -62,8 +62,8 @@
       <div class="fw-bold">GST</div>
 
     </div>
-
-         <span class="badge bg-primary rounded-pill m-2 me-5"><%=  @province.GST %> </span>
+          <% gst = @subtotal * @province.GST/100  %>
+         <span class="badge bg-primary rounded-pill m-2 me-5"><%= number_to_currency gst %> </span>
 
 
   <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -71,8 +71,8 @@
       <div class="fw-bold">PST</div>
 
     </div>
-
-         <span class="badge bg-primary rounded-pill m-2 me-5 "><%=  @province.PST %> </span>
+        <% pst = @subtotal *  @province.PST/100  %>
+         <span class="badge bg-primary rounded-pill m-2 me-5 "><%= number_to_currency pst %> </span>
 
 
   <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -80,8 +80,8 @@
       <div class="fw-bold me-5 ">HST</div>
 
     </div>
-
-         <span class="badge bg-primary rounded-pill m-2 me-5"><%=  @province.HST %> </span>
+          <% hst = @subtotal *  @province.HST/100 %>
+         <span class="badge bg-primary rounded-pill m-2 me-5"><%= number_to_currency hst %> </span>
 
 
       <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -89,8 +89,8 @@
       <div class="fw-bold me-5 ">Total</div>
 
     </div>
-          <%@total = @total + @subtotal %>
-         <span class="badge bg-primary rounded-pill m-2 me-5"><%=  @total %> </span>
+          <%@total = @total + @subtotal + gst + pst + hst %>
+         <span class="badge bg-primary rounded-pill m-2 me-5"><%= number_to_currency  @total %> </span>
 
 <% end %>
 

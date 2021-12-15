@@ -7,7 +7,7 @@
   <div class="row g-0">
     <div class="col-md-4">
    <%if item.image.present? %>
-     <%= image_tag item.image , width: "100%" , height: "width",alt:"Logo" %>
+     <%= image_tag item.image , width: "100%" , height: "width", alt:"Logo" %>
    <%end%>
     </div>
     <div class="col-md-8">
@@ -20,24 +20,24 @@
     <% params[:quantity] =1 %>
 
 
-       <p class="card-text"><small class="text-muted">Quantity:  <%= params[:quantity] %></small></p>
+       <p class="card-text"><small class="text-muted">Quantity:  <%= session[:item_quantity][item.id.to_s] %></small></p>
 
 
-
-
-
-       <%= form_tag items_path do  %>
-      <%= hidden_field_tag(:id, item.id.to_s) %>
-    <%= hidden_field_tag(:quantity, session[:item_quantity][item.id.to_s]) %>
-      <%= button_tag 'Add ' %>
+<%= form_tag items_path do  %>
+     <%= hidden_field_tag("id", item.id.to_s, :id => item.id.to_s) %>
+     <%= hidden_field_tag("quantity", session[:item_quantity][item.id.to_s], :quantity => session[:item_quantity][item.id.to_s]) %>
+       <%= button_tag 'Add ' %>
        <% end %>
 
 
+
+
     <%= form_with url: cart_index_path, method: :post do   %>
-    <%= hidden_field_tag(:id, item.id) %>
-    <%= hidden_field_tag(:quantity, params[:quantity]) %>
+    <%= hidden_field_tag("id", item.id, :id => item.id) %>
+    <%= hidden_field_tag("quantity", session[:item_quantity][item.id.to_s] , :quantity => session[:item_quantity][item.id.to_s]) %>
       <%= button_tag 'Add to Cart' %>
     <% end %>
+
 
 
       </div>
@@ -55,4 +55,4 @@
 
 <%# Doing experiment with the quantity %>
 
-<%# <%= @hash_item_quantity_relation %> 
+<%= @hash_item_quantity_relation %>
