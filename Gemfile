@@ -67,3 +67,4 @@ gem 'image_processing' # ImageMagic
 
 gem 'kaminari'
 gem 'stripe'
+gem 'breadcrumbs_on_rails'

@@ -1,6 +1,7 @@
 class CartController < ApplicationController
 
   def index
+    add_breadcrumb "Shopping cart", :cart_index_path
   @hash_session = session[:shopping_cart]
     @subtotal = 0
     @province = Province.find(current_user.province_id)

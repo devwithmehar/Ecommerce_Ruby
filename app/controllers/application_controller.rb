@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user! , :initialize_session
   helper_method :cart
 
+  add_breadcrumb "home", :root_path
+
+
+
+
   def initialize_session
     session[:shopping_cart] ||= {} # empty has for to cart
     session[:item_quantity] ||= {} # item_id quantity relation for decrement and increment of items

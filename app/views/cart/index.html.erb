@@ -1,3 +1,7 @@
+<%= render_breadcrumbs %>
+
+
+
 <figure class="text-center m-5 h1">
   <blockquote class="blockquote">
     <p>Shopping Cart 🛒</p>
@@ -100,7 +104,7 @@
 
 
  <%= form_with url: checkout_create_path, remote: true do %>
-       
+
         <%= button_tag "Buy Now" %>
       <% end %>
 
