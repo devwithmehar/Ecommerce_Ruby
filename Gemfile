@@ -66,3 +66,4 @@ gem 'devise'
 gem 'image_processing' # ImageMagic
 
 gem 'kaminari'
+gem 'stripe'
